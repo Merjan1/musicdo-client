@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apis = {
-  development: "A URL DO SEU SERVIDOR EXPRESS LOCAL AQUI",
+  development: "http://localhost:4000/posts",
   production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
 };
 
@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 // Configura a instância do Axios para injetar o cabeçalho de autenticação antes de cada requisição
-api.interceptors.request.use((config) => {
+api.interceptors.request.use(async (config) => {
   // Verifica se já temos as informações do usuário logado no localStorage
   const storedUser = localStorage.getItem("loggedInUser");
 
