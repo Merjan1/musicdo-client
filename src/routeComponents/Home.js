@@ -2,21 +2,20 @@ import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 
-import {getPosts} from '../actions/posts'
+import { getPosts } from "../actions/posts";
 import Form from "../components/Form/Form";
 import Posts from "../components/Posts/Posts";
 import logo from "../images/music-logo.jpg";
 import useStyles from "../components/Home.styles";
-import {useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
 function Home() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getPosts());
-
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <Container maxWidth="lg">
@@ -34,7 +33,7 @@ function Home() {
       </AppBar>
       <Grow in>
         <Container>
-          <Grid container justify="space-between" alignItems="strech">
+          <Grid container justify="space-between" alignItems="stretch">
             <Grid item xs={12} sm={7}>
               <Posts />
             </Grid>
