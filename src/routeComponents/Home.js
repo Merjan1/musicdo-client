@@ -34,9 +34,14 @@ function Home() {
       </AppBar>
       <Grow in>
         <Container>
-          <Grid container justify="space-between" alignItems="stretch">
+          <Grid
+            className={classes.mainContainer}
+            container
+            justify="space-between"
+            alignItems="stretch"
+          >
             <Grid item xs={12} sm={7}>
-              <Posts setCurrentId={setCurrentId} />
+              <Posts setCurrentId={setCurrentId} /> &nbsp;
             </Grid>
             <Grid item xs={12} sm={4}>
               <Form currentId={currentId} setCurrentId={setCurrentId} />

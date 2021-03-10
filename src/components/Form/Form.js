@@ -27,7 +27,16 @@ const Form = ({ currentId, setCurrentId }) => {
     }
   }, [post]);
 
-  const clear = (event) => {};
+  const clear = () => {
+    setCurrentId(null);
+    setPostData({
+      creator: "",
+      title: "",
+      caption: "",
+      tags: "",
+      selectedFile: "",
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +46,7 @@ const Form = ({ currentId, setCurrentId }) => {
     } else {
       dispatch(createPost(postData));
     }
+    clear();
   };
 
   return (
@@ -47,7 +57,9 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">Post Creating Tool</Typography>
+        <Typography variant="h6">
+          {currentId ? "Edit" : "Create"} Your Posts Here!
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
@@ -85,10 +97,10 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           value={postData.tags}
           onChange={(event) =>
-            setPostData({ ...postData, tags: event.target.value })
+            setPostData({ ...postData, tags: event.target.value.split(", ") })
           }
         />
-        buttonSubmit
+
         <div className={classes.fileInput}>
           <FileBase64
             type="file"
