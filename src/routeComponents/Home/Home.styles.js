@@ -16,15 +16,10 @@ export default makeStyles((theme) => ({
     marginLeft: "15px",
   },
 
-[theme.breakpoints.down('sm')]: {
-  mainCointainer: {
-    flexDirection:'column-reverse'
-  }
-}
-
-  // [theme.breakpoits.down("sm")]: {
-  //   mainContainer: {
-  //     flexDirection: "column-reverse",
-  //   },
-  // },
+  [theme.breakpoints.down("sm")]: {
+    formBox: {
+      display: "flex",
+      flexDirection: "column-reverse",
+    },
+  },
 }));

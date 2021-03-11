@@ -38,6 +38,10 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
 
+  const handleChange = (event) => {
+    setPostData({ ...postData, [event.target.name]: event.target.value });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -66,9 +70,7 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Creator"
           fullWidth
           value={postData.creator}
-          onChange={(event) =>
-            setPostData({ ...postData, creator: event.target.value })
-          }
+          onChange={handleChange}
         />
         <TextField
           name="title"
@@ -76,19 +78,16 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Title"
           fullWidth
           value={postData.title}
-          onChange={(event) =>
-            setPostData({ ...postData, title: event.target.value })
-          }
+          onChange={handleChange}
         />
         <TextField
+          // className={classes.captionElipsis}
           name="caption"
           variant="outlined"
           label="Caption"
           fullWidth
           value={postData.caption}
-          onChange={(event) =>
-            setPostData({ ...postData, caption: event.target.value })
-          }
+          onChange={handleChange}
         />
         <TextField
           name="tags"
@@ -97,7 +96,7 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           value={postData.tags}
           onChange={(event) =>
-            setPostData({ ...postData, tags: event.target.value.split(", ") })
+            setPostData({ ...postData, tags: event.target.value.split(",") })
           }
         />
 
