@@ -29,7 +29,6 @@ function Home() {
           src={logo}
           alt="music logo"
           height="60"
-          // width="60"
         />
       </AppBar>
       <Grow in>
@@ -39,6 +38,7 @@ function Home() {
             container
             justify="space-between"
             alignItems="stretch"
+            spacing={3}
           >
             <Grid item xs={12} sm={7}>
               <Posts setCurrentId={setCurrentId} /> &nbsp;
