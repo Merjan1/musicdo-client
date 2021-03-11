@@ -13,12 +13,10 @@ const Navbar = () => {
   const history = useHistory();
   const location = useLocation();
 
-  console.log(user);
-
   const logout = () => {
     dispatch({ type: "LOGOUT" });
 
-    history.push("/");
+    history.push("/auth");
 
     setUser(null);
   };
@@ -51,15 +49,18 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
+            {console.log(user)}
             <Avatar
               className={classes.purple}
-              alt={user.result.name}
-              src={user.result.imageUrl}
+              alt={user.result ? user.result.name : user.user.name}
+              src={user.result ? user.result.imageUrl : user.user.imageUrl}
             >
-              {user.result.name.charAt(0)}
+              {user.result
+                ? user.result.name.charAt(0)
+                : user.user.name.charAt(0)}
             </Avatar>
             <Typography className={classes.userName} variant="h6">
-              {user.result.name}
+              {user.result ? user.result.name : user.user.name}
             </Typography>
             <Button
               variant="contained"

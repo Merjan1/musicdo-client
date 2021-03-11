@@ -1,28 +1,30 @@
 import axios from "axios";
 
-const url = "http://localhost:4000/posts";
+const API = axios.create({ baseURL: "http://localhost:4000" });
 
-export const fetchPosts = () => axios.get(url);
-export const createPost = (newPost) => axios.post(url, newPost);
+export const fetchPosts = () => API.get("/posts");
+export const createPost = (newPost) => API.post("/posts", newPost);
 export const updatePost = (id, updatedPost) =>
-  axios.patch(`${url}/${id}`, updatedPost);
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
-export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
+  API.patch(`/posts/${id}`, updatedPost);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+export const signIn = (formData) => API.post("/login/login", formData);
+export const signUp = (formData) => API.post("/login/signup", formData);
 
-const apis = {
-  development: "http://localhost:4000/posts",
-  production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
-};
+// const apis = {
+//   development: "http://localhost:4000/posts",
+//   production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
+// };
 
-// Pré-configurando a URL padrão do nosso backend em uma instância do Axios
-const api = axios.create({
-  baseURL: apis[process.env.NODE_ENV],
-});
+// // Pré-configurando a URL padrão do nosso backend em uma instância do Axios
+// const api = axios.create({
+//   baseURL: apis[process.env.NODE_ENV],
+// });
 
 // Configura a instância do Axios para injetar o cabeçalho de autenticação antes de cada requisição
-api.interceptors.request.use(async (config) => {
+API.interceptors.request.use(async (config) => {
   // Verifica se já temos as informações do usuário logado no localStorage
-  const storedUser = localStorage.getItem("loggedInUser");
+  const storedUser = localStorage.getItem("profile");
 
   const loggedInUser = JSON.parse(storedUser || '""');
 
@@ -35,4 +37,4 @@ api.interceptors.request.use(async (config) => {
   return config;
 });
 
-export default api;
+export default API;

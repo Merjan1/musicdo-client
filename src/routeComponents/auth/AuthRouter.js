@@ -25,7 +25,7 @@ const initialState = {
   lastName: "",
   email: "",
   password: "",
-  conformPassword: "",
+  confirmPassword: "",
 };
 
 function AuthRouter(props) {
@@ -45,7 +45,7 @@ function AuthRouter(props) {
       dispatch(signin(formData, history));
     }
 
-    console.log(formData);
+    // console.log(formData);
   };
 
   const handleChange = (event) => {
@@ -62,7 +62,7 @@ function AuthRouter(props) {
   };
 
   const googleSuccess = async (res) => {
-    console.log(res);
+    // console.log(res);
     const result = res?.profileObj;
     const token = res?.tokenId;
 
