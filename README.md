@@ -3,6 +3,7 @@
 MusicDo is a MERN application that works as a online board to make musicians e-meet!
 
 Click [HERE](https://music-do.netlify.app/) to test it!
+
 Link to the presentation [HERE](https://docs.google.com/presentation/d/17tjLnyyKJEKoUA-IG8FzzPbNXLWgpmnqRN6HU_zQ6fM/edit?usp=sharing)
 
 ## Using the app
