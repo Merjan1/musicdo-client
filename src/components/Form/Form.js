@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase64 from "react-file-base64";
-import green from '@material-ui/core/colors/green'
+import green from "@material-ui/core/colors/green";
 
 import useStyles from "./Form.styles";
 import { createPost, updatePost } from "../../actions/posts";
-
 
 const Form = ({ currentId, setCurrentId }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -19,7 +18,7 @@ const Form = ({ currentId, setCurrentId }) => {
     caption: "",
     tags: "",
     selectedFile: "",
-    owner: user.result ? user.result.googleId : user._id,
+    owner: user ? (user.result ? user.result.googleId : user.user._id) : "",
   });
   const post = useSelector((state) =>
     currentId ? state.posts.find((p) => p._id === currentId) : null
@@ -42,7 +41,7 @@ const Form = ({ currentId, setCurrentId }) => {
       caption: "",
       tags: "",
       selectedFile: "",
-      owner: user.result ? user.result.googleId : user.user._id,
+      owner: user ? (user.result ? user.result.googleId : user.user._id) : "",
     });
   };
 

@@ -52,15 +52,15 @@ const Navbar = () => {
             {console.log(user)}
             <Avatar
               className={classes.purple}
-              alt={user.result ? user.result.name : user.name}
-              src={user.result ? user.result.imageUrl : user.imageUrl}
+              alt={user.result ? user.result.name : user.user.name}
+              src={user.result ? user.result.imageUrl : user.user.imageUrl}
             >
               {user.result
                 ? user.result.name.charAt(0)
-                : user.name.charAt(0)}
+                : user.user.name.charAt(0)}
             </Avatar>
             <Typography className={classes.userName} variant="h6">
-              {user.result ? user.result.name : user.name}
+              {user.result ? user.result.name : user.user.name}
             </Typography>
             <Button
               variant="outlined"
