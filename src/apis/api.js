@@ -11,16 +11,6 @@ export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 export const signIn = (formData) => API.post("/login/login", formData);
 export const signUp = (formData) => API.post("/login/signup", formData);
 
-// const apis = {
-//   development: "http://localhost:4000/posts",
-//   production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
-// };
-
-// // Pré-configurando a URL padrão do nosso backend em uma instância do Axios
-// const api = axios.create({
-//   baseURL: apis[process.env.NODE_ENV],
-// });
-
 // Configura a instância do Axios para injetar o cabeçalho de autenticação antes de cada requisição
 API.interceptors.request.use(async (config) => {
   // Verifica se já temos as informações do usuário logado no localStorage
