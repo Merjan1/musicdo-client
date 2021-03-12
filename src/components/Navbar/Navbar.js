@@ -49,7 +49,6 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
-            {console.log(user)}
             <Avatar
               className={classes.purple}
               alt={user.result ? user.result.name : user.user.name}

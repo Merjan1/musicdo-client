@@ -6,7 +6,7 @@ function AuthContextComponent(props) {
   const [loggedInUser, setLoggedInUser] = useState({ token: "", user: {} });
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("loggedInUser");
+    const storedUser = localStorage.getItem("profile");
 
     const parsedStoredUser = JSON.parse(storedUser || '""');
 

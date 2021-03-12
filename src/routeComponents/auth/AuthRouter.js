@@ -44,8 +44,6 @@ function AuthRouter(props) {
     } else {
       dispatch(signin(formData, history));
     }
-
-    // console.log(formData);
   };
 
   const handleChange = (event) => {
@@ -62,7 +60,6 @@ function AuthRouter(props) {
   };
 
   const googleSuccess = async (res) => {
-    // console.log(res);
     const result = res?.profileObj;
     const token = res?.tokenId;
 
