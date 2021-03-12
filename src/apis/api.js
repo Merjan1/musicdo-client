@@ -1,6 +1,11 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:4000" });
+const apis = {
+  development: "http://localhost:4000",
+  production: "https://music-do-api.herokuapp.com",
+};
+
+const API = axios.create({ baseURL: apis[process.env.NODE_ENV] });
 
 export const fetchPosts = () => API.get("/posts");
 export const createPost = (newPost) => API.post("/posts", newPost);
