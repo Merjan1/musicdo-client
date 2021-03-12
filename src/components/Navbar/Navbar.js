@@ -4,11 +4,11 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import useStyles from "./Navbar.styles";
-import logo from "../../images/music-logo.jpg";
+import logo from "../../images/music_logo.jpg";
 
 const Navbar = () => {
-  const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -34,7 +34,7 @@ const Navbar = () => {
           component={Link}
           to="/"
           className={classes.heading}
-          variant="h2"
+          variant="h4"
           align="center"
         >
           MusicDo
@@ -49,22 +49,23 @@ const Navbar = () => {
       <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
+            {console.log(user)}
             <Avatar
               className={classes.purple}
-              alt={user.result ? user.result.name : user.user.name}
-              src={user.result ? user.result.imageUrl : user.user.imageUrl}
+              alt={user.result ? user.result.name : user.name}
+              src={user.result ? user.result.imageUrl : user.imageUrl}
             >
               {user.result
                 ? user.result.name.charAt(0)
-                : user.user.name.charAt(0)}
+                : user.name.charAt(0)}
             </Avatar>
             <Typography className={classes.userName} variant="h6">
-              {user.result ? user.result.name : user.user.name}
+              {user.result ? user.result.name : user.name}
             </Typography>
             <Button
-              variant="contained"
+              variant="outlined"
               className={classes.logout}
-              color="secondary"
+              color="primary"
               onClick={logout}
             >
               Logout
